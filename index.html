@@ -15,13 +15,23 @@
       Number Generator
     </h1>
     <p>
-      Generate a number using the button below
+      Generate a random number using the button below
     </p>
-    <button class="generator" id="generator">Generate</button>
+    
+    <form id="myForm">
+      <input type="text" required="endNum" placeholder="Enter end number value" id="endNum">
+      
+        <button type="submit">set</button>
+    </form>
+    
+    
+    
+    <p id="values">default values:<br>start = 1 <br> end = 1 </p>
+    <div class="btn-div">
+      <button class="generator" id="generator">Generate</button>
+    </div>
     <p class="display" id="display">Number: </p>
   </div>
-  
-  <p>/</p>
   
   <script src="script.js"></script>
 </body>

@@ -7,3 +7,11 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+.hide {
+  display: none;
+}
+
+.btn-div {
+  margin-top: 10px;
+}
