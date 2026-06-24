@@ -1,23 +1,63 @@
 const generator = document.getElementById('generator');
 const displayNum = document.getElementById('display');
 const form = document.getElementById('myForm');
+const form2 = document.getElementById('myForm2');
 const endNumInput = document.getElementById('endNum');
+const startNumInput = document.getElementById('startNum');
 const valueOutput = document.getElementById('values');
 let randomNum = '';
-let userData = '';
+let userEndNum = 1;
+let userStartNum = 1;
+
+valueOutput.style.whiteSpace = "pre-line";
+
+form2.addEventListener('submit', function(event) {
+  
+  event.preventDefault();
+  
+  rawUserStartNum = startNumInput.value;
+  userStartNum = Number(startNumInput.value);
+  
+  if (rawUserStartNum.trim() === "" || isNaN(userStartNum) || !Number.isInteger(userStartNum)) {
+    valueOutput.textContent = 'put valid numbers plz </3'
+  } else {
+    valueOutput.textContent = `
+    start = ${userStartNum}\nend = ${userEndNum}
+  `;
+  }
+});
 
 form.addEventListener('submit', function(event) {
   
   event.preventDefault();
   
-  userData = endNumInput.value;
-  valueOutput.textContent = `end value set to: ${userData}`;
+  rawUserEndNum = endNumInput.value;
+  userEndNum = Number(endNumInput.value);
+  
+  if (rawUserEndNum.trim() === "" || isNaN(userEndNum) || !Number.isInteger(userEndNum)) {
+    valueOutput.textContent = 'put valid numbers plz </3'
+  } else {
+    valueOutput.textContent = `
+    start = ${userStartNum}\nend = ${userEndNum}
+  `;
+  }
 });
 
 
 
 generator.addEventListener('click', function() {
-  let randomNum = Math.floor(Math.random() * userData) + 1;
-  displayNum.innerHTML = 'Number: ' + randomNum;
-  console.log('success!')
+  const rawStart = startNumInput.value;
+  const rawEnd = endNumInput.value;
+  
+  if (rawStart < rawEnd) {
+  displayNum.innerHTML = 'Thats NOT how math works.';
+  } else if ((rawStart.trim() === 1 &&  rawEnd.trim() === 1) &&  rawStart > rawEnd) {
+    const randomNum = 1
+      displayNum.innerHTML = 'Number: ' + randomNum;
+    console.log('empty.');
+  } else {
+    const randomNum = Math.floor(Math.random() * (userEndNum - userStartNum + 1)) + userStartNum;
+      displayNum.innerHTML = 'Number: ' + randomNum;
+      console.log('success!');
+  }
 });
