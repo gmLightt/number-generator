@@ -49,9 +49,10 @@ generator.addEventListener('click', function() {
   const rawStart = startNumInput.value;
   const rawEnd = endNumInput.value;
   
-  if (rawStart < rawEnd) {
+  if (userStartNum > userEndNum) {
   displayNum.innerHTML = 'Thats NOT how math works.';
-  } else if ((rawStart.trim() === 1 &&  rawEnd.trim() === 1) &&  rawStart > rawEnd) {
+  console.log('fail.')
+  } else if (rawStart.trim() === '' &&  rawEnd.trim() === '') {
     const randomNum = 1
       displayNum.innerHTML = 'Number: ' + randomNum;
     console.log('empty.');
